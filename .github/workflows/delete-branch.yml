@@ -15,7 +15,7 @@ jobs:
     steps:
       - name: Delete source branch
         env:
-          GITHUB_TOKEN: ${{ secrets.PAT_DELETE_BRANCH }}
+          GITHUB_TOKEN: ${{ secrets.PAT_DELETE_BRANCH_PLAYWRIGHT_REPO }}
         run: |
           BRANCH_NAME=${{ github.event.pull_request.head.ref }}
           REPO_URL="https://x-access-token:${GITHUB_TOKEN}@github.com/${{ github.repository }}.git"
