@@ -4,7 +4,7 @@ test.beforeEach(async ({ page }) => {
   await page.goto(`http://localhost:4200/`);
 });
 
-test.describe('App Component', () => {
+test.describe('Load Application', () => {
   test('Application Load Successfully', async ({ page }) => {
     await expect(page.locator('app-root')).toBeAttached();
   });
