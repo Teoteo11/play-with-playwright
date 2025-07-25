@@ -1,0 +1,29 @@
+name: Delete merged branch
+
+on:
+  pull_request:
+    types:
+      - closed
+
+jobs:
+  delete-branch:
+    if: github.event.pull_request.merged == true &&
+        github.event.pull_request.base.ref == 'main' &&
+        !startsWith(github.event.pull_request.head.ref, 'main')
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Delete source branch
+        env:
+          GITHUB_TOKEN: ${{ secrets.PAT_DELETE_BRANCH }}
+        run: |
+          BRANCH_NAME=${{ github.event.pull_request.head.ref }}
+          REPO_URL="https://x-access-token:${GITHUB_TOKEN}@github.com/${{ github.repository }}.git"
+
+          git config --global user.name "github-actions"
+          git config --global user.email "github-actions@github.com"
+
+          git clone --depth=1 --branch main "$REPO_URL" repo
+          cd repo
+
+          git push origin --delete "$BRANCH_NAME"
