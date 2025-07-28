@@ -1,0 +1,61 @@
+@use '../../styles/variables' as *;
+@use 'sass:map';
+
+.wrapper-navbar {
+    padding: 16px 24px;
+    border-bottom: 1px solid map.get($colors, custom-gray);
+    
+    .col-logo {
+        display: flex;
+        align-items: baseline;
+        gap: 8px;
+    
+        .logo {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            background-color: map.get($colors, primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 16px;
+            
+            .logo-text {
+                font-size: 1rem;
+                font-weight: 700;
+                color: map.get($colors, custom-black);
+            }
+        }
+    
+        .title {
+            color: map.get($colors, custom-black);
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin: 0;
+        }
+    }
+
+    .col-buttons {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        gap: 16px;
+
+        .custom-btn {
+            color: map.get($colors, custom-black);
+            font-size: 14px;
+            font-weight: 700;
+            border: none;
+            border-radius: 24px;
+            cursor: pointer;
+            transition: all 0.2s ease-in-out;
+            text-decoration: none;
+            outline: none;
+
+            &.btn-active {
+                background-color: map.get($colors, primary);
+            }
+        }
+
+    }
+}
