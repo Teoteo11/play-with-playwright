@@ -1,0 +1,14 @@
+<div class="container-fluid">
+    <div class="row wrapper-navbar">
+        <div class="col-6 col-logo" data-testid="logo-and-title">
+            <div class="logo">
+                <span class="logo-text">T</span>
+            </div>
+            <h1 class="title">Task manager</h1>
+        </div>
+        <div class="col-6 col-buttons">
+            <button [class.btn-active]="activeTab() === 'tasks'" class="btn custom-btn" (click)="onTabClick('tasks')">Tasks</button>
+            <button [class.btn-active]="activeTab() === 'add-task'" class="btn custom-btn" (click)="onTabClick('add-task')">Add task</button>
+        </div>
+    </div>
+</div>
